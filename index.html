@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
     <title>DAB</title>
 <!--
     
@@ -170,6 +172,28 @@ https://templatemo.com/tm-558-klassy-cafe
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
     <script>
+        const form = document.getElementById('contact');
+
+        function sendMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const msg = document.getElementById('message');
+
+            Email.send({
+            SecureToken : "374d0b03-7dbd-4ec6-af55-68df50d27278",
+            To : 'yoannphilippewilson@gmail.com',
+            From : email.value,
+            Subject : "Formulaire contact",
+            Body : msg.value
+        }).then(
+            message => alert(message)
+        );
+        }
+
+        form.addEventListener('submit', sendMessage);
+
+
 
         $(function() {
             var selectedClass = "";
